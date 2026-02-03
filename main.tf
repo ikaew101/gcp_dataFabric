@@ -98,3 +98,90 @@ variable "project_id" {
   description = "The ID of the Google Cloud project"
   default     = "cis-dev-ai-smart-mirror"
 }
+
+# ==========================================
+# 5. CLOUD FUNCTIONS (UPDATED FIX)
+# ==========================================
+
+# 5.1 เปิดใช้งาน API ที่จำเป็น (เพิ่ม Artifact Registry)
+resource "google_project_service" "cf_service" {
+  service            = "cloudfunctions.googleapis.com"
+  disable_on_destroy = false
+}
+
+resource "google_project_service" "build_service" {
+  service            = "cloudbuild.googleapis.com"
+  disable_on_destroy = false
+}
+
+resource "google_project_service" "artifact_registry_api" {
+  service            = "artifactregistry.googleapis.com"
+  disable_on_destroy = false
+}
+
+# 5.2 สร้าง Service Account ขึ้นมาเอง (ไม่ต้องง้อ Default)
+resource "google_service_account" "function_sa" {
+  account_id   = "sensor-function-sa"
+  display_name = "Service Account for Sensor Data Function"
+}
+
+# 5.3 ให้สิทธิ์ Service Account นี้เขียนลง BigQuery ได้
+resource "google_project_iam_member" "function_bq_editor" {
+  project = var.project_id
+  role    = "roles/bigquery.dataEditor"
+  member  = "serviceAccount:${google_service_account.function_sa.email}"
+}
+
+# 5.4 ให้สิทธิ์ Service Account นี้อ่าน Artifact Registry ได้ (แก้ Error ตัวบน)
+resource "google_project_iam_member" "function_artifact_reader" {
+  project = var.project_id
+  role    = "roles/artifactregistry.reader"
+  member  = "serviceAccount:${google_service_account.function_sa.email}"
+}
+
+# 5.5 เตรียมไฟล์ Zip
+data "archive_file" "function_zip" {
+  type        = "zip"
+  source_dir  = "${path.module}/function_code"
+  output_path = "${path.module}/function_source.zip"
+}
+
+# 5.6 อัปโหลดไฟล์ Zip
+resource "google_storage_bucket_object" "function_archive" {
+  name   = "source-code-${data.archive_file.function_zip.output_md5}.zip"
+  bucket = google_storage_bucket.function_bucket.name
+  source = data.archive_file.function_zip.output_path
+}
+
+# 5.7 สร้าง Cloud Function (โดยบังคับให้ใช้ Service Account ที่เราสร้าง)
+resource "google_cloudfunctions_function" "data_ingest_function" {
+  name        = "sensor-data-ingester"
+  description = "Ingest sensor data from Pub/Sub to BigQuery"
+  runtime     = "python310"
+
+  available_memory_mb   = 256
+  source_archive_bucket = google_storage_bucket.function_bucket.name
+  source_archive_object = google_storage_bucket_object.function_archive.name
+  
+  # Trigger
+  event_trigger {
+    event_type = "google.pubsub.topic.publish"
+    resource   = google_pubsub_topic.ingest_topic.name
+  }
+
+  entry_point = "process_sensor_data"
+  
+  environment_variables = {
+    TABLE_ID = "${var.project_id}.${google_bigquery_dataset.analytics_ds.dataset_id}.test_table"
+  }
+
+  # --- จุดสำคัญ: สั่งให้ใช้ Service Account ของเรา ---
+  service_account_email = google_service_account.function_sa.email
+
+  depends_on = [
+    google_project_service.cf_service,
+    google_project_service.build_service,
+    google_project_service.artifact_registry_api,
+    google_project_iam_member.function_artifact_reader
+  ]
+}
