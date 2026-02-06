@@ -1,0 +1,383 @@
+{
+  "version": 4,
+  "terraform_version": "1.14.4",
+  "serial": 228,
+  "lineage": "f29d6565-464a-a517-e243-a1b47abae67b",
+  "outputs": {},
+  "resources": [
+    {
+      "mode": "managed",
+      "type": "google_project_service",
+      "name": "services",
+      "provider": "provider[\"registry.terraform.io/hashicorp/google\"]",
+      "instances": [
+        {
+          "index_key": "apigateway.googleapis.com",
+          "schema_version": 0,
+          "attributes": {
+            "disable_dependent_services": null,
+            "disable_on_destroy": false,
+            "id": "cis-dev-ai-smart-mirror/apigateway.googleapis.com",
+            "project": "cis-dev-ai-smart-mirror",
+            "service": "apigateway.googleapis.com",
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxMjAwMDAwMDAwMDAwLCJkZWxldGUiOjEyMDAwMDAwMDAwMDAsInJlYWQiOjYwMDAwMDAwMDAwMCwidXBkYXRlIjoxMjAwMDAwMDAwMDAwfX0=",
+          "create_before_destroy": true
+        },
+        {
+          "index_key": "artifactregistry.googleapis.com",
+          "schema_version": 0,
+          "attributes": {
+            "disable_dependent_services": null,
+            "disable_on_destroy": false,
+            "id": "cis-dev-ai-smart-mirror/artifactregistry.googleapis.com",
+            "project": "cis-dev-ai-smart-mirror",
+            "service": "artifactregistry.googleapis.com",
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxMjAwMDAwMDAwMDAwLCJkZWxldGUiOjEyMDAwMDAwMDAwMDAsInJlYWQiOjYwMDAwMDAwMDAwMCwidXBkYXRlIjoxMjAwMDAwMDAwMDAwfX0=",
+          "create_before_destroy": true
+        },
+        {
+          "index_key": "cloudbuild.googleapis.com",
+          "schema_version": 0,
+          "attributes": {
+            "disable_dependent_services": null,
+            "disable_on_destroy": false,
+            "id": "cis-dev-ai-smart-mirror/cloudbuild.googleapis.com",
+            "project": "cis-dev-ai-smart-mirror",
+            "service": "cloudbuild.googleapis.com",
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxMjAwMDAwMDAwMDAwLCJkZWxldGUiOjEyMDAwMDAwMDAwMDAsInJlYWQiOjYwMDAwMDAwMDAwMCwidXBkYXRlIjoxMjAwMDAwMDAwMDAwfX0=",
+          "create_before_destroy": true
+        },
+        {
+          "index_key": "run.googleapis.com",
+          "schema_version": 0,
+          "attributes": {
+            "disable_dependent_services": null,
+            "disable_on_destroy": false,
+            "id": "cis-dev-ai-smart-mirror/run.googleapis.com",
+            "project": "cis-dev-ai-smart-mirror",
+            "service": "run.googleapis.com",
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxMjAwMDAwMDAwMDAwLCJkZWxldGUiOjEyMDAwMDAwMDAwMDAsInJlYWQiOjYwMDAwMDAwMDAwMCwidXBkYXRlIjoxMjAwMDAwMDAwMDAwfX0=",
+          "create_before_destroy": true
+        },
+        {
+          "index_key": "servicecontrol.googleapis.com",
+          "schema_version": 0,
+          "attributes": {
+            "disable_dependent_services": null,
+            "disable_on_destroy": false,
+            "id": "cis-dev-ai-smart-mirror/servicecontrol.googleapis.com",
+            "project": "cis-dev-ai-smart-mirror",
+            "service": "servicecontrol.googleapis.com",
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxMjAwMDAwMDAwMDAwLCJkZWxldGUiOjEyMDAwMDAwMDAwMDAsInJlYWQiOjYwMDAwMDAwMDAwMCwidXBkYXRlIjoxMjAwMDAwMDAwMDAwfX0=",
+          "create_before_destroy": true
+        },
+        {
+          "index_key": "servicemanagement.googleapis.com",
+          "schema_version": 0,
+          "attributes": {
+            "disable_dependent_services": null,
+            "disable_on_destroy": false,
+            "id": "cis-dev-ai-smart-mirror/servicemanagement.googleapis.com",
+            "project": "cis-dev-ai-smart-mirror",
+            "service": "servicemanagement.googleapis.com",
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxMjAwMDAwMDAwMDAwLCJkZWxldGUiOjEyMDAwMDAwMDAwMDAsInJlYWQiOjYwMDAwMDAwMDAwMCwidXBkYXRlIjoxMjAwMDAwMDAwMDAwfX0=",
+          "create_before_destroy": true
+        },
+        {
+          "index_key": "sqladmin.googleapis.com",
+          "schema_version": 0,
+          "attributes": {
+            "disable_dependent_services": null,
+            "disable_on_destroy": false,
+            "id": "cis-dev-ai-smart-mirror/sqladmin.googleapis.com",
+            "project": "cis-dev-ai-smart-mirror",
+            "service": "sqladmin.googleapis.com",
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxMjAwMDAwMDAwMDAwLCJkZWxldGUiOjEyMDAwMDAwMDAwMDAsInJlYWQiOjYwMDAwMDAwMDAwMCwidXBkYXRlIjoxMjAwMDAwMDAwMDAwfX0=",
+          "create_before_destroy": true
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "google_sql_database_instance",
+      "name": "main_instance",
+      "provider": "provider[\"registry.terraform.io/hashicorp/google\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "available_maintenance_versions": [],
+            "backupdr_backup": null,
+            "clone": [],
+            "connection_name": "cis-dev-ai-smart-mirror:asia-southeast1:sensor-db-instance-e9a1ab6d",
+            "database_version": "POSTGRES_14",
+            "deletion_protection": false,
+            "dns_name": "",
+            "dns_names": [],
+            "encryption_key_name": null,
+            "final_backup_description": null,
+            "first_ip_address": "34.143.239.116",
+            "id": "sensor-db-instance-e9a1ab6d",
+            "instance_type": "CLOUD_SQL_INSTANCE",
+            "ip_address": [
+              {
+                "ip_address": "34.143.239.116",
+                "time_to_retire": "",
+                "type": "PRIMARY"
+              },
+              {
+                "ip_address": "34.142.175.163",
+                "time_to_retire": "",
+                "type": "OUTGOING"
+              }
+            ],
+            "maintenance_version": "POSTGRES_14_20.R20260108.01_01",
+            "master_instance_name": "",
+            "name": "sensor-db-instance-e9a1ab6d",
+            "node_count": 0,
+            "point_in_time_restore_context": [],
+            "private_ip_address": "",
+            "project": "cis-dev-ai-smart-mirror",
+            "psc_service_attachment_link": "",
+            "public_ip_address": "34.143.239.116",
+            "region": "asia-southeast1",
+            "replica_configuration": [],
+            "replica_names": [],
+            "replication_cluster": [
+              {
+                "dr_replica": false,
+                "failover_dr_replica_name": "",
+                "psa_write_endpoint": ""
+              }
+            ],
+            "restore_backup_context": [],
+            "root_password": null,
+            "root_password_wo": null,
+            "root_password_wo_version": null,
+            "self_link": "https://sqladmin.googleapis.com/sql/v1beta4/projects/cis-dev-ai-smart-mirror/instances/sensor-db-instance-e9a1ab6d",
+            "server_ca_cert": [
+              {
+                "cert": "-----BEGIN CERTIFICATE-----\nMIIDfzCCAmegAwIBAgIBADANBgkqhkiG9w0BAQsFADB3MS0wKwYDVQQuEyQ2YmUy\nYTE4Zi1iZjYwLTQ4MDItYjZkYi1hMzRkZDIyOWZiMWExIzAhBgNVBAMTGkdvb2ds\nZSBDbG91ZCBTUUwgU2VydmVyIENBMRQwEgYDVQQKEwtHb29nbGUsIEluYzELMAkG\nA1UEBhMCVVMwHhcNMjYwMjA1MDM1NzM2WhcNMzYwMjAzMDM1ODM2WjB3MS0wKwYD\nVQQuEyQ2YmUyYTE4Zi1iZjYwLTQ4MDItYjZkYi1hMzRkZDIyOWZiMWExIzAhBgNV\nBAMTGkdvb2dsZSBDbG91ZCBTUUwgU2VydmVyIENBMRQwEgYDVQQKEwtHb29nbGUs\nIEluYzELMAkGA1UEBhMCVVMwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIB\nAQDYlO+r98VErxQN3iorYzZeai9QSUD59twzFKpfRa/z28IHMazdGuovjMBMxzQX\nBc5UGITMrJsx3b96pJ5hyjCkqXMAYMhvGYU1lvk6l4/ZSaxBKpryq8JwgVJzrpfu\nsjP3OayqBbh1h8Kfd9X31WDuiGa22IVFOv27so+2iBYyssitOvB0M8c/AUxua/rY\npuBDjgnveEywwy+djmB572DEi1Erx7HkdA0U12J32rZDBJayMdq5xRq2SZe0KDpy\n8XTNROMCd+vYqcP7cPLXuZ1GsOcXyDKzjp5Ce2LqkthNSjk36LY/fqi/CRV4c8Uw\nxcw8TVsvs+0vhpKDDhHiv6KHAgMBAAGjFjAUMBIGA1UdEwEB/wQIMAYBAf8CAQAw\nDQYJKoZIhvcNAQELBQADggEBAIrve21W+ffUfflDTFKsmN9r1ABXetL4rmJvZIt3\nTAeQ1VOq+fhn/yieJOcH/Oeh+rZExTApxu1fjR/k7i3e2+ZCFJvROklelcwdGbed\nP73MRPli+xgaUa7VbqPVv3Adl2hUTG8RgcQA4EHVwc7jVGbhy25C05SC7sMg8mLb\n9SyDBg5rmBhbqA8F9d1YDpUqDgiteSHA0uM74vs8b3PxApXQllHiBoa7GQ6ImD8I\n35upVyAmA+96TcMUxe80/Vk+N9XlyT+f7k0ckY9x+3M3FhzFdlbAyFqf91Ai34o/\nXjjNO2sKN3A5A6/7QBDTwQgZJXbtHRcl3Ued91HrUtUFQpQ=\n-----END CERTIFICATE-----",
+                "common_name": "C=US,O=Google\\, Inc,CN=Google Cloud SQL Server CA,dnQualifier=6be2a18f-bf60-4802-b6db-a34dd229fb1a",
+                "create_time": "2026-02-05T03:57:36.105Z",
+                "expiration_time": "2036-02-03T03:58:36.105Z",
+                "sha1_fingerprint": "1090421043696419a66c79fd9bedfefd982aa452"
+              }
+            ],
+            "service_account_email_address": "p2141415524-qi2avi@gcp-sa-cloud-sql.iam.gserviceaccount.com",
+            "settings": [
+              {
+                "activation_policy": "ALWAYS",
+                "active_directory_config": [],
+                "advanced_machine_features": [],
+                "availability_type": "ZONAL",
+                "backup_configuration": [
+                  {
+                    "backup_retention_settings": [
+                      {
+                        "retained_backups": 7,
+                        "retention_unit": "COUNT"
+                      }
+                    ],
+                    "backup_tier": "STANDARD",
+                    "binary_log_enabled": false,
+                    "enabled": false,
+                    "location": "",
+                    "point_in_time_recovery_enabled": false,
+                    "start_time": "20:00",
+                    "transaction_log_retention_days": 7
+                  }
+                ],
+                "collation": "",
+                "connection_pool_config": [],
+                "connector_enforcement": "NOT_REQUIRED",
+                "data_cache_config": [
+                  {
+                    "data_cache_enabled": false
+                  }
+                ],
+                "database_flags": [],
+                "deletion_protection_enabled": false,
+                "deny_maintenance_period": [],
+                "disk_autoresize": true,
+                "disk_autoresize_limit": 0,
+                "disk_size": 10,
+                "disk_type": "PD_SSD",
+                "edition": "ENTERPRISE",
+                "effective_availability_type": "ZONAL",
+                "enable_dataplex_integration": false,
+                "enable_google_ml_integration": false,
+                "final_backup_config": [],
+                "insights_config": [],
+                "ip_configuration": [
+                  {
+                    "allocated_ip_range": "",
+                    "authorized_networks": [
+                      {
+                        "expiration_time": "",
+                        "name": "allow-all",
+                        "value": "0.0.0.0/0"
+                      }
+                    ],
+                    "custom_subject_alternative_names": [],
+                    "enable_private_path_for_google_cloud_services": false,
+                    "ipv4_enabled": true,
+                    "private_network": "",
+                    "psc_config": [],
+                    "server_ca_mode": "GOOGLE_MANAGED_INTERNAL_CA",
+                    "server_ca_pool": "",
+                    "ssl_mode": "ALLOW_UNENCRYPTED_AND_ENCRYPTED"
+                  }
+                ],
+                "location_preference": [
+                  {
+                    "follow_gae_application": "",
+                    "secondary_zone": "",
+                    "zone": "asia-southeast1-a"
+                  }
+                ],
+                "maintenance_window": [],
+                "password_validation_policy": [],
+                "pricing_plan": "PER_USE",
+                "read_pool_auto_scale_config": [
+                  {
+                    "disable_scale_in": false,
+                    "enabled": false,
+                    "max_node_count": 0,
+                    "min_node_count": 0,
+                    "scale_in_cooldown_seconds": 0,
+                    "scale_out_cooldown_seconds": 0,
+                    "target_metrics": []
+                  }
+                ],
+                "retain_backups_on_delete": false,
+                "sql_server_audit_config": [],
+                "tier": "db-f1-micro",
+                "time_zone": "",
+                "user_labels": {},
+                "version": 2
+              }
+            ],
+            "timeouts": null
+          },
+          "sensitive_attributes": [
+            [
+              {
+                "type": "get_attr",
+                "value": "root_password"
+              }
+            ],
+            [
+              {
+                "type": "get_attr",
+                "value": "server_ca_cert"
+              }
+            ]
+          ],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo1NDAwMDAwMDAwMDAwLCJkZWxldGUiOjU0MDAwMDAwMDAwMDAsInVwZGF0ZSI6NTQwMDAwMDAwMDAwMH19",
+          "dependencies": [
+            "google_project_service.services",
+            "random_id.db_name_suffix"
+          ],
+          "create_before_destroy": true
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "google_sql_user",
+      "name": "users",
+      "provider": "provider[\"registry.terraform.io/hashicorp/google\"]",
+      "instances": [
+        {
+          "schema_version": 1,
+          "attributes": {
+            "deletion_policy": null,
+            "host": "",
+            "id": "sensor_user//sensor-db-instance-e9a1ab6d",
+            "instance": "sensor-db-instance-e9a1ab6d",
+            "name": "sensor_user",
+            "password": "admin123!",
+            "password_policy": [],
+            "password_wo": null,
+            "password_wo_version": null,
+            "project": "cis-dev-ai-smart-mirror",
+            "sql_server_user_details": [],
+            "timeouts": null,
+            "type": ""
+          },
+          "sensitive_attributes": [
+            [
+              {
+                "type": "get_attr",
+                "value": "password"
+              }
+            ]
+          ],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo2MDAwMDAwMDAwMDAsImRlbGV0ZSI6NjAwMDAwMDAwMDAwLCJ1cGRhdGUiOjYwMDAwMDAwMDAwMH0sInNjaGVtYV92ZXJzaW9uIjoiMSJ9",
+          "dependencies": [
+            "google_project_service.services",
+            "google_sql_database_instance.main_instance",
+            "random_id.db_name_suffix"
+          ],
+          "create_before_destroy": true
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "random_id",
+      "name": "db_name_suffix",
+      "provider": "provider[\"registry.terraform.io/hashicorp/random\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "b64_std": "6aGrbQ==",
+            "b64_url": "6aGrbQ",
+            "byte_length": 4,
+            "dec": "3919686509",
+            "hex": "e9a1ab6d",
+            "id": "6aGrbQ",
+            "keepers": null,
+            "prefix": null
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "create_before_destroy": true
+        }
+      ]
+    }
+  ],
+  "check_results": null
+}

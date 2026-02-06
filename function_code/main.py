@@ -1,39 +1,51 @@
 import base64
 import json
 import os
+from datetime import datetime
 from google.cloud import bigquery
 
-# ตั้งค่า Client ไว้ข้างนอกเพื่อให้ Reuse Connection (Best Practice)
+# Reuse Connection เพื่อประสิทธิภาพ
 bq_client = bigquery.Client()
-# อ่านชื่อ Table จาก Environment Variable ที่เราจะตั้งใน Terraform
-TABLE_ID = os.environ.get('TABLE_ID') 
+TABLE_ID = os.environ.get('TABLE_ID')
 
 def process_sensor_data(event, context):
-    """Triggered from a message on a Cloud Pub/Sub topic."""
     try:
-        # 1. แกะซองจดหมาย (Decode Pub/Sub Message)
+        # 1. แกะซองจดหมาย (Decode Message)
         pubsub_message = base64.b64decode(event['data']).decode('utf-8')
-        payload = json.loads(pubsub_message)
+        raw_payload = json.loads(pubsub_message)
         
-        print(f"Received payload: {payload}")
+        print(f"Original Payload: {raw_payload}")
 
-        # 2. ปรับข้อมูลให้อยู่ในรูปแบบ List เสมอ (เพื่อรองรับทั้งแบบส่งเดี่ยวและส่งเป็นชุด)
+        # 2. Normalize: ทำให้เป็น List เสมอ (เผื่อส่งมาเดี่ยวหรือมาเป็นชุด)
+        items = raw_payload if isinstance(raw_payload, list) else [raw_payload]
+        
         rows_to_insert = []
-        if isinstance(payload, list):
-            rows_to_insert = payload  # ถ้ามาเป็น Array อยู่แล้วก็ใช้เลย
-        else:
-            rows_to_insert = [payload] # ถ้ามาตัวเดียว ให้จับใส่ List
+        current_time = datetime.utcnow().isoformat()
 
-        # 3. ยิงเข้า BigQuery
-        errors = bq_client.insert_rows_json(TABLE_ID, rows_to_insert)
+        # 3. Loop จัดเตรียมข้อมูลลงถังกลาง
+        for item in items:
+            # Logic: พยายามหาว่าใครส่งมา (จาก key 'source' หรือ 'type' หรือ 'device_type')
+            # ถ้าหาไม่เจอ ให้ระบุเป็น 'unknown'
+            source_type = item.get('source', item.get('type', 'unknown'))
+            
+            # สร้าง Row มาตรฐาน 3 คอลัมน์
+            row = {
+                "ingest_timestamp": current_time,
+                "source_type": source_type,      # เช่น nova, orion
+                "payload": json.dumps(item)      # เก็บ JSON ทั้งก้อนเป็น String
+            }
+            rows_to_insert.append(row)
 
-        if errors == []:
-            print(f"Successfully inserted {len(rows_to_insert)} rows.")
-        else:
-            print(f"Encountered errors: {errors}")
-            # ยก Error เพื่อให้ Pub/Sub รู้ว่าส่งไม่สำเร็จ (และจะลองส่งใหม่)
-            raise RuntimeError(f"BigQuery Insert Errors: {errors}")
+        # 4. ยิงเข้า BigQuery
+        if rows_to_insert:
+            errors = bq_client.insert_rows_json(TABLE_ID, rows_to_insert)
+            if errors == []:
+                print(f"Successfully ingested {len(rows_to_insert)} raw events.")
+            else:
+                print(f"Encountered errors: {errors}")
+                raise RuntimeError(f"BigQuery Insert Errors: {errors}")
 
     except Exception as e:
-        print(f"Error processing message: {e}")
+        print(f"Critical Error: {e}")
+        # (Optional) ใน Production ควรส่ง Alert เข้า Slack/Email ตรงนี้
         raise e
